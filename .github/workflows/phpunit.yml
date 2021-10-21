@@ -34,11 +34,6 @@ jobs:
                     extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv, bcmath
                     coverage: none
 
-            -   name: Store environment variables
-                run: |
-                    echo "CASHIER_BANK_TECHNOLOGY_CLIENT_ID=${{ secrets.CASHIER_BANK_TECHNOLOGY_CLIENT_ID }}" >> .env
-                    echo "CASHIER_BANK_TECHNOLOGY_CLIENT_SECRET=${{ secrets.CASHIER_BANK_TECHNOLOGY_CLIENT_SECRET }}" >> .env
-
             -   name: Install dependencies
                 run: composer require laravel/framework:^${{ matrix.laravel }} --prefer-stable --prefer-dist --no-progress --no-interaction
 
@@ -46,4 +41,3 @@ jobs:
                 run: sudo vendor/bin/phpunit
                 env:
                     MYSQL_HOST: 127.0.0.1
-                    PGSQL_HOST: 127.0.0.1
