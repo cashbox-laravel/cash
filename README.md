@@ -68,7 +68,7 @@ namespace App\Payments;
 
 use CashierProvider\Core\Resources\Model;
 
-class BankName extends Model
+class Cash extends Model
 {
     protected function paymentId(): string
     {
