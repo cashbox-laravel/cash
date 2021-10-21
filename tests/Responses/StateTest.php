@@ -1,11 +1,26 @@
 <?php
 
+/*
+ * This file is part of the "cashier-provider/cash" project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Andrey Helldar <helldar@ai-rus.com>
+ *
+ * @copyright 2021 Andrey Helldar
+ *
+ * @license MIT
+ *
+ * @see https://github.com/cashier-provider/cash
+ */
+
 namespace Tests\Responses;
 
+use CashierProvider\Cash\Responses\State;
 use CashierProvider\Core\Http\Response as BaseResponse;
 use Helldar\Contracts\Cashier\Http\Response;
 use Tests\TestCase;
-use CashierProvider\BankName\Technology\Responses\State;
 
 class StateTest extends TestCase
 {
@@ -43,13 +58,8 @@ class StateTest extends TestCase
     protected function response(): Response
     {
         return State::make([
-            'TerminalKey' => $this->getTerminalKey(),
-
-            'OrderId'   => self::PAYMENT_ID,
-            'Success'   => true,
-            'Status'    => self::STATUS,
             'PaymentId' => self::PAYMENT_EXTERNAL_ID,
-            'ErrorCode' => 0,
+            'Status'    => self::STATUS,
         ]);
     }
 }

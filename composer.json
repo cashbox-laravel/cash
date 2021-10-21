@@ -1,28 +1,27 @@
 {
-    "name": "cashier-provider/bankname-technology",
-    "description": "Driver for payment with TECHNOLOGY codes via BankName (see cashier-provider/core)",
+    "name": "cashier-provider/cash",
+    "description": "Driver for managing cash payments (see cashier-provider/core)",
     "type": "library",
     "license": "MIT",
     "keywords": [
-        "your-name",
         "bank",
         "billing",
-        "cashier"
+        "cashier",
+        "cash"
     ],
     "authors": [
         {
-            "name": "Your Name",
-            "email": "your-email@example.com"
+            "name": "Andrey Helldar",
+            "email": "helldar@ai-rus.com"
         }
     ],
     "support": {
-        "issues": "https://github.com/cashier-provider/bankname-technology/issues",
-        "source": "https://github.com/cashier-provider/bankname-technology"
+        "issues": "https://github.com/cashier-provider/cash/issues",
+        "source": "https://github.com/cashier-provider/cash"
     },
     "require": {
         "php": "^7.3|^8.0",
-        "cashier-provider/bankname-auth": "^1.0",
-        "cashier-provider/core": "^1.29",
+        "cashier-provider/core": "^1.30",
         "psr/http-message": "^1.0"
     },
     "require-dev": {
@@ -35,7 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "CashierProvider\\BankName\\Technology\\": "src"
+            "CashierProvider\\Cash\\": "src"
         }
     },
     "autoload-dev": {
@@ -48,11 +47,5 @@
         "sort-packages": true
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "github",
-            "url": "git@github.com:cashier-provider/driver-auth.git"
-        }
-    ]
+    "prefer-stable": true
 }

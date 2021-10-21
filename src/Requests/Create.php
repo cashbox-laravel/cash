@@ -17,20 +17,23 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Responses;
+namespace CashierProvider\Cash\Requests;
 
-use CashierProvider\Core\Http\Response;
+use CashierProvider\Cash\Constants\Status as StatusConst;
 
-class State extends Response
+class Create extends BaseRequest
 {
-    protected $map = [
-        self::KEY_EXTERNAL_ID => 'PaymentId',
-
-        self::KEY_STATUS => 'Status',
-    ];
-
-    public function isEmpty(): bool
+    public function getRawBody(): array
     {
-        return empty($this->getExternalId()) || empty($this->getStatus());
+        return [
+            'PaymentId' => $this->model->getPaymentId(),
+
+            'Status' => $this->status(),
+        ];
+    }
+
+    protected function status(): string
+    {
+        return StatusConst::PAID;
     }
 }

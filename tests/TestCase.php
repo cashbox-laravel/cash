@@ -1,7 +1,23 @@
 <?php
 
+/*
+ * This file is part of the "cashier-provider/cash" project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Andrey Helldar <helldar@ai-rus.com>
+ *
+ * @copyright 2021 Andrey Helldar
+ *
+ * @license MIT
+ *
+ * @see https://github.com/cashier-provider/cash
+ */
+
 namespace Tests;
 
+use CashierProvider\Cash\Driver;
 use CashierProvider\Core\Config\Driver as DriverConfig;
 use CashierProvider\Core\Constants\Driver as DriverConstant;
 use CashierProvider\Core\Facades\Config\Payment as PaymentConfig;
@@ -15,13 +31,12 @@ use Tests\Concerns\Database;
 use Tests\Concerns\TestServiceProvider;
 use Tests\Fixtures\Models\ReadyPayment;
 use Tests\Fixtures\Resources\Model;
-use CashierProvider\BankName\Technology\Driver;
 
 abstract class TestCase extends BaseTestCase
 {
     use Database;
 
-    public const PAYMENT_EXTERNAL_ID = '456789';
+    public const PAYMENT_EXTERNAL_ID = '1234567890';
 
     public const PAYMENT_ID = '1234567890';
 
@@ -37,7 +52,7 @@ abstract class TestCase extends BaseTestCase
 
     public const PAYMENT_DATE_FORMATTED = '2021-07-23T17:33:27Z';
 
-    public const STATUS = 'NEW';
+    public const STATUS = 'PAID';
 
     public const URL = 'https://example.com';
 
@@ -61,15 +76,12 @@ abstract class TestCase extends BaseTestCase
         $config->set('cashier.payment.model', $this->model);
 
         $config->set('cashier.payment.map', [
-            self::MODEL_TYPE_ID => 'driver_name',
+            self::MODEL_TYPE_ID => 'cash',
         ]);
 
-        $config->set('cashier.drivers.driver_name', [
+        $config->set('cashier.drivers.cash', [
             DriverConstant::DRIVER  => Driver::class,
             DriverConstant::DETAILS => Model::class,
-
-            DriverConstant::CLIENT_ID     => env('CASHIER_BANK_TECHNOLOGY_CLIENT_ID'),
-            DriverConstant::CLIENT_SECRET => env('CASHIER_BANK_TECHNOLOGY_CLIENT_SECRET'),
         ]);
     }
 
@@ -99,7 +111,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * @param  \CashierProvider\BankName\Technology\Requests\BaseRequest|string  $request
+     * @param  \CashierProvider\Cash\Requests\BaseRequest|string  $request
      *
      * @return \Helldar\Contracts\Cashier\Http\Request
      */
@@ -117,18 +129,8 @@ abstract class TestCase extends BaseTestCase
 
     protected function config(): DriverConfig
     {
-        $config = config('cashier.drivers.driver_name');
+        $config = config('cashier.drivers.cash');
 
         return DriverConfig::make($config);
-    }
-
-    protected function getTerminalKey(): string
-    {
-        return config('cashier.drivers.driver_name.client_id');
-    }
-
-    protected function getTerminalSecret(): string
-    {
-        return config('cashier.drivers.driver_name.client_secret');
     }
 }

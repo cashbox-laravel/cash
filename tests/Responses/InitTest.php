@@ -1,11 +1,26 @@
 <?php
 
+/*
+ * This file is part of the "cashier-provider/cash" project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Andrey Helldar <helldar@ai-rus.com>
+ *
+ * @copyright 2021 Andrey Helldar
+ *
+ * @license MIT
+ *
+ * @see https://github.com/cashier-provider/cash
+ */
+
 namespace Tests\Responses;
 
+use CashierProvider\Cash\Responses\Created;
 use CashierProvider\Core\Http\Response as BaseResponse;
 use Helldar\Contracts\Cashier\Http\Response;
 use Tests\TestCase;
-use CashierProvider\BankName\Technology\Responses\Created;
 
 class InitTest extends TestCase
 {
@@ -43,14 +58,8 @@ class InitTest extends TestCase
     protected function response(): Response
     {
         return Created::make([
-            'TerminalKey' => $this->getTerminalKey(),
-
-            'Amount'    => self::PAYMENT_SUM_FORMATTED,
-            'OrderId'   => self::PAYMENT_ID,
-            'Success'   => true,
-            'Status'    => self::STATUS,
             'PaymentId' => self::PAYMENT_EXTERNAL_ID,
-            'ErrorCode' => 0,
+            'Status'    => self::STATUS,
         ]);
     }
 }

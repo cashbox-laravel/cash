@@ -17,15 +17,11 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Responses;
+namespace CashierProvider\Cash\Constants;
 
-use CashierProvider\Core\Http\Response;
-
-class Created extends Response
+class Status
 {
-    protected $map = [
-        self::KEY_EXTERNAL_ID => 'PaymentId',
+    public const PAID = 'PAID';
 
-        self::KEY_STATUS => 'Status',
-    ];
+    public const REFUNDED = 'REFUNDED';
 }

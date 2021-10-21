@@ -1,37 +1,50 @@
 <?php
 
-namespace CashierProvider\BankName\Technology;
+/*
+ * This file is part of the "cashier-provider/cash" project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Andrey Helldar <helldar@ai-rus.com>
+ *
+ * @copyright 2021 Andrey Helldar
+ *
+ * @license MIT
+ *
+ * @see https://github.com/cashier-provider/cash
+ */
 
-use CashierProvider\BankName\Technology\Exceptions\Manager;
-use CashierProvider\BankName\Technology\Helpers\Statuses;
-use CashierProvider\BankName\Technology\Requests\Cancel;
-use CashierProvider\BankName\Technology\Requests\GetState;
-use CashierProvider\BankName\Technology\Requests\Init;
-use CashierProvider\BankName\Technology\Resources\Details;
-use CashierProvider\BankName\Technology\Responses\Created;
-use CashierProvider\BankName\Technology\Responses\Refund;
-use CashierProvider\BankName\Technology\Responses\State;
+namespace CashierProvider\Cash;
+
+use CashierProvider\Cash\Helpers\Statuses;
+use CashierProvider\Cash\Requests\Cancel;
+use CashierProvider\Cash\Requests\Create;
+use CashierProvider\Cash\Requests\Status;
+use CashierProvider\Cash\Resources\Details;
+use CashierProvider\Cash\Responses\Created;
+use CashierProvider\Cash\Responses\Refund;
+use CashierProvider\Cash\Responses\State;
 use CashierProvider\Core\Services\Driver as BaseDriver;
+use Helldar\Contracts\Cashier\Http\Request as RequestResource;
 use Helldar\Contracts\Cashier\Http\Response;
 
 class Driver extends BaseDriver
 {
-    protected $exceptions = Manager::class;
-
     protected $statuses = Statuses::class;
 
     protected $details = Details::class;
 
     public function start(): Response
     {
-        $request = Init::make($this->model);
+        $request = Create::make($this->model);
 
         return $this->request($request, Created::class);
     }
 
     public function check(): Response
     {
-        $request = GetState::make($this->model);
+        $request = Status::make($this->model);
 
         return $this->request($request, State::class);
     }
@@ -41,5 +54,18 @@ class Driver extends BaseDriver
         $request = Cancel::make($this->model);
 
         return $this->request($request, Refund::class);
+    }
+
+    /**
+     * @param  \Helldar\Contracts\Cashier\Http\Request  $request
+     * @param  \Helldar\Contracts\Cashier\Http\Response|string  $response
+     *
+     * @return \Helldar\Contracts\Cashier\Http\Response
+     */
+    protected function request(RequestResource $request, string $response): Response
+    {
+        $content = $request->body();
+
+        return $response::make($content);
     }
 }

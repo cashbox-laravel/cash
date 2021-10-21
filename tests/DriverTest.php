@@ -1,15 +1,29 @@
 <?php
 
+/*
+ * This file is part of the "cashier-provider/cash" project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Andrey Helldar <helldar@ai-rus.com>
+ *
+ * @copyright 2021 Andrey Helldar
+ *
+ * @license MIT
+ *
+ * @see https://github.com/cashier-provider/cash
+ */
+
 namespace Tests;
 
+use CashierProvider\Cash\Driver as Technology;
 use CashierProvider\Core\Http\Response;
 use CashierProvider\Core\Services\Jobs;
 use Helldar\Contracts\Cashier\Driver as DriverContract;
 use Helldar\Contracts\Cashier\Http\Response as ResponseContract;
-use Helldar\Support\Facades\Http\Url;
 use Illuminate\Database\Eloquent\Model;
 use Tests\Fixtures\Models\RequestPayment;
-use CashierProvider\BankName\Technology\Driver as Technology;
 
 class DriverTest extends TestCase
 {
@@ -25,11 +39,8 @@ class DriverTest extends TestCase
         $this->assertInstanceOf(ResponseContract::class, $response);
 
         $this->assertIsString($response->getExternalId());
-        $this->assertMatchesRegularExpression('/^(\d+)$/', $response->getExternalId());
 
-        $this->assertNull($response->getStatus());
-
-        $this->assertTrue(Url::is($response->getUrl()));
+        $this->assertSame(self::STATUS, $response->getStatus());
     }
 
     public function testCheck()
@@ -44,12 +55,11 @@ class DriverTest extends TestCase
         $this->assertInstanceOf(ResponseContract::class, $response);
 
         $this->assertIsString($response->getExternalId());
-        $this->assertMatchesRegularExpression('/^(\d+)$/', $response->getExternalId());
 
-        $this->assertSame('FORM_SHOWED', $response->getStatus());
+        $this->assertSame(self::STATUS, $response->getStatus());
 
         $this->assertSame([
-            'status' => 'FORM_SHOWED',
+            'status' => self::STATUS,
         ], $response->toArray());
     }
 
@@ -66,9 +76,8 @@ class DriverTest extends TestCase
         $this->assertInstanceOf(ResponseContract::class, $response);
 
         $this->assertIsString($response->getExternalId());
-        $this->assertMatchesRegularExpression('/^(\d+)$/', $response->getExternalId());
 
-        $this->assertSame('CANCELED', $response->getStatus());
+        $this->assertSame('REFUNDED', $response->getStatus());
     }
 
     protected function driver(Model $payment): DriverContract

@@ -17,15 +17,18 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Responses;
+namespace CashierProvider\Cash\Requests;
 
-use CashierProvider\Core\Http\Response;
-
-class Created extends Response
+class Status extends BaseRequest
 {
-    protected $map = [
-        self::KEY_EXTERNAL_ID => 'PaymentId',
+    protected $reload_relations = true;
 
-        self::KEY_STATUS => 'Status',
-    ];
+    public function getRawBody(): array
+    {
+        return [
+            'PaymentId' => $this->model->getExternalId(),
+
+            'Status' => $this->model->getPaymentModel()->cashier->details->getStatus(),
+        ];
+    }
 }

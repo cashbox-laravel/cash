@@ -17,45 +17,45 @@
 
 namespace Tests\Requests;
 
-use CashierProvider\Cash\Requests\Cancel;
+use CashierProvider\Cash\Requests\Status;
 use CashierProvider\Core\Http\Request;
 use Helldar\Contracts\Cashier\Http\Request as RequestContract;
 use Tests\TestCase;
 
-class CancelTest extends TestCase
+class StatusTest extends TestCase
 {
-    public const STATUS = 'REFUNDED';
-
     public function testInstance()
     {
-        $request = $this->request(Cancel::class);
+        $request = $this->request(Status::class);
 
-        $this->assertInstanceOf(Cancel::class, $request);
+        $this->assertInstanceOf(Status::class, $request);
         $this->assertInstanceOf(Request::class, $request);
         $this->assertInstanceOf(RequestContract::class, $request);
     }
 
     public function testBody()
     {
-        $request = $this->request(Cancel::class);
+        $request = $this->request(Status::class);
 
         $this->assertIsArray($request->body());
 
         $this->assertSame([
             'PaymentId' => self::PAYMENT_EXTERNAL_ID,
-            'Status'    => self::STATUS,
+
+            'Status' => null,
         ], $request->body());
     }
 
     public function testGetRawBody()
     {
-        $request = $this->request(Cancel::class);
+        $request = $this->request(Status::class);
 
         $this->assertIsArray($request->getRawBody());
 
         $this->assertSame([
             'PaymentId' => self::PAYMENT_EXTERNAL_ID,
-            'Status'    => self::STATUS,
+
+            'Status' => null,
         ], $request->body());
     }
 }
