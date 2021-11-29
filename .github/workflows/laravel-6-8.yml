@@ -1,4 +1,4 @@
-name: "Laravel 6-0"
+name: "Laravel 6-8"
 on: [ push ]
 
 jobs:
