@@ -85,7 +85,7 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
 
-    protected function model(Details $details = null): ReadyPayment
+    protected function model(?Details $details = null): ReadyPayment
     {
         $model = PaymentConfig::getModel();
 
@@ -111,7 +111,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * @param  \CashierProvider\Cash\Requests\BaseRequest|string  $request
+     * @param \CashierProvider\Cash\Requests\BaseRequest|string $request
      *
      * @return \DragonCode\Contracts\Cashier\Http\Request
      */

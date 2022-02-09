@@ -57,8 +57,8 @@ class Driver extends BaseDriver
     }
 
     /**
-     * @param  \DragonCode\Contracts\Cashier\Http\Request  $request
-     * @param  \DragonCode\Contracts\Cashier\Http\Response|string  $response
+     * @param \DragonCode\Contracts\Cashier\Http\Request $request
+     * @param \DragonCode\Contracts\Cashier\Http\Response|string $response
      *
      * @return \DragonCode\Contracts\Cashier\Http\Response
      */
