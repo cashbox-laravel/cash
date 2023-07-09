@@ -17,9 +17,10 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Requests;
+namespace Cash\src\Requests;
 
-use CashierProvider\Cash\Constants\Status as StatusConst;
+use Cash\src\Requests\BaseRequest;
+use Cash\src\Constants\Status as StatusConst;
 
 class Create extends BaseRequest
 {

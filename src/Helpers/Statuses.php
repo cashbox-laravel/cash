@@ -15,9 +15,9 @@
  * @see https://github.com/cashier-provider/cash
  */
 
-namespace CashierProvider\Cash\Helpers;
+namespace Cash\src\Helpers;
 
-use CashierProvider\Cash\Constants\Status;
+use Cash\src\Constants\Status;
 use CashierProvider\Core\Services\Statuses as BaseStatus;
 
 class Statuses extends BaseStatus

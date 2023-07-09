@@ -15,19 +15,19 @@
  * @see https://github.com/cashier-provider/cash
  */
 
-namespace CashierProvider\Cash;
+namespace Cash\src;
 
-use CashierProvider\Cash\Helpers\Statuses;
-use CashierProvider\Cash\Requests\Cancel;
-use CashierProvider\Cash\Requests\Create;
-use CashierProvider\Cash\Requests\Status;
-use CashierProvider\Cash\Resources\Details;
-use CashierProvider\Cash\Responses\Created;
-use CashierProvider\Cash\Responses\Refund;
-use CashierProvider\Cash\Responses\State;
+use Cash\src\Helpers\Statuses;
+use Cash\src\Requests\Cancel;
+use Cash\src\Requests\Create;
+use Cash\src\Requests\Status;
+use Cash\src\Resources\Details;
+use Cash\src\Responses\Created;
+use Cash\src\Responses\Refund;
+use Cash\src\Responses\State;
 use CashierProvider\Core\Services\Driver as BaseDriver;
-use DragonCode\Contracts\Cashier\Http\Request as RequestResource;
-use DragonCode\Contracts\Cashier\Http\Response;
+use Helldar\Contracts\Cashier\Http\Request as RequestResource;
+use Helldar\Contracts\Cashier\Http\Response;
 
 class Driver extends BaseDriver
 {
@@ -57,10 +57,10 @@ class Driver extends BaseDriver
     }
 
     /**
-     * @param \DragonCode\Contracts\Cashier\Http\Request $request
-     * @param \DragonCode\Contracts\Cashier\Http\Response|string $response
+     * @param  \Helldar\Contracts\Cashier\Http\Request  $request
+     * @param  \Helldar\Contracts\Cashier\Http\Response|string  $response
      *
-     * @return \DragonCode\Contracts\Cashier\Http\Response
+     * @return \Helldar\Contracts\Cashier\Http\Response
      */
     protected function request(RequestResource $request, string $response): Response
     {
