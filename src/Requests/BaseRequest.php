@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Cash\src\Requests;
+namespace CashierProvider\Cash\Requests;
 
 use CashierProvider\Core\Http\Request;
 

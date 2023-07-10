@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Cash\src\Responses;
+namespace CashierProvider\Cash\Responses;
 
 use CashierProvider\Core\Http\Response;
 

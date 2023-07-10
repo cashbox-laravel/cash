@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Cash\src\Constants;
+namespace CashierProvider\Cash\Constants;
 
 class Status
 {

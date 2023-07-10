@@ -17,9 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Cash\src\Requests;
-
-use Cash\src\Requests\BaseRequest;
+namespace CashierProvider\Cash\Requests;
 
 class Status extends BaseRequest
 {
