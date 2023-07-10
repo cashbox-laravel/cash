@@ -118,6 +118,10 @@
                 "url": "https://github.com/cashier-provider/docs"
             },
             {
+                "name": "cashier-provider/foundation",
+                "url": "https://github.com/cashier-provider/foundation"
+            },
+            {
                 "name": "cashier-provider/core",
                 "url": "https://github.com/cashier-provider/core"
             },
