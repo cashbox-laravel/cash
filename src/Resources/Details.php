@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Resources;
+namespace Cash\src\Resources;
 
 use CashierProvider\Core\Resources\Details as BaseDetails;
 
