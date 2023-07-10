@@ -1,117 +1,51 @@
-# Cash Driver Provider
+# Cash Driver
 
-<img src="https://preview.dragon-code.pro/cashier-provider/cash.svg?brand=laravel&mode=dark" alt="Cash Driver"/>
+![cashier-provider](https://preview.dragon-code.pro/cashier-provider/cash.svg?brand=laravel)
 
 [![Stable Version][badge_stable]][link_packagist]
 [![Unstable Version][badge_unstable]][link_packagist]
 [![Total Downloads][badge_downloads]][link_packagist]
 [![License][badge_license]][link_license]
 
-
-## Installation
-
-To get the latest version of `Cash Driver Provider`, simply require the project using [Composer](https://getcomposer.org):
-
-```bash
-$ composer require cashier-provider/cash
-```
-
-Or manually update `require` block of `composer.json` and run `composer update`.
-
-```json
-{
-    "require": {
-        "cashier-provider/cash": "^2.0"
-    }
-}
-```
-
-## Using
-
-> **Note**:
+> Attention
 >
-> This project is the driver for [`Cashier Provider`](https://github.com/cashier-provider/core).
+> The project is in a state of global upgrade and some links may not be correct.
 
+## About Cashier Provider
 
-### Configuration
+`Cashier` provides an expressive and user-friendly interface for managing billing and payment verification services.
+We believe that development should be an enjoyable, creative experience to be truly rewarding.
+`Cashier Provider` tries to ease development by simplifying the tasks of adding payment systems to a web application.
 
-Add your driver information to the `config/cashier.php` file:
+The project contains some ready-made solutions of payment systems, but you can offer your own.
 
-```php
-use App\Models\Payment;
-use App\Payments\Cash as CashDetails;
-use CashierProvider\Cash\Driver as CashDriver;
-use CashierProvider\Core\Constants\Driver;
+## About Driver
 
-return [
-    'payment' => [
-        'map' => [
-            Payment::TYPE_CASH => 'cash'
-        ]
-    ],
+The `Cash` payment driver implements cash payments in your application using the `Cashier Provider` interface.
+It is not connected to any bank, so all actions are instantaneous.
 
-    'drivers' => [
-        'cash' => [
-            Driver::DRIVER  => CashDriver::class,
-            Driver::DETAILS => CashDetails::class,
-        ]
-    ]
-];
-```
+## Documentation
 
-### Resource
+You will find full documentation on the dedicated [documentation](https://github.com/cashier-provider/docs) site.
 
-Create a model resource class inheriting from `CashierProvider\Core\Resources\Model` in your application.
+## Contributing
 
-Use the `$this->model` link to refer to the payment model. When executed, the `$model` parameter will contain the payment instance.
+Thank you for considering contributing to the `Cashier Provider`!
+The contribution guide can be found in the [Cashier Provider documentation](https://github.com/cashier-provider/docs).
 
-```php
-namespace App\Payments;
+## Code of Conduct
 
-use CashierProvider\Core\Resources\Model;
+In order to ensure that the `Cashier Provider` community is welcoming to all, please review and abide by
+the [Code of Conduct](https://github.com/cashier-provider/docs).
 
-class Cash extends Model
-{
-    protected function paymentId(): string
-    {
-        return (string) $this->model->id;
-    }
+## Security Vulnerabilities
 
-    protected function sum(): float
-    {
-        return (float) $this->model->sum;
-    }
+Please review [our security policy](https://github.com/cashier-provider/docs) on how to report security vulnerabilities.
 
-    protected function currency(): int
-    {
-        return $this->model->currency;
-    }
+## License
 
-    protected function createdAt(): Carbon
-    {
-        return $this->model->created_at;
-    }
-}
-```
-
-### Available Methods And Details Data
-
-```php
-$payment->cashier->external_id
-// Returns transaction ID for this operation
-
-$payment->cashier->details->getStatus(): ?string
-// Returns the text status from the bank
-// For example, `PAID`.
-
-$payment->cashier->details->toArray(): array
-// Returns an array of status.
-// For example,
-//
-// [
-//     'status' => 'PAID'
-// ]
-```
+The Cashier Provider is open-source software that works in conjunction with
+the [Laravel framework](https://laravel.com/), distributed under the MIT license.
 
 [badge_downloads]:      https://img.shields.io/packagist/dt/cashier-provider/cash.svg?style=flat-square
 
