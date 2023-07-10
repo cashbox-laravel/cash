@@ -25,7 +25,6 @@ class Statuses extends BaseStatus
     public const REFUNDED = [
         Status::REFUNDED,
     ];
-
     public const SUCCESS = [
         Status::PAID,
     ];

@@ -21,6 +21,4 @@ namespace CashierProvider\Cash\Resources;
 
 use CashierProvider\Core\Resources\Details as BaseDetails;
 
-class Details extends BaseDetails
-{
-}
+class Details extends BaseDetails {}

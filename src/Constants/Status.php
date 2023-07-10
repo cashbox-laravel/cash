@@ -21,7 +21,6 @@ namespace CashierProvider\Cash\Constants;
 
 class Status
 {
-    public const PAID = 'PAID';
-
+    public const PAID     = 'PAID';
     public const REFUNDED = 'REFUNDED';
 }
