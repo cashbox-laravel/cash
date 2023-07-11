@@ -47,6 +47,7 @@ Please review [our security policy](https://github.com/cashier-provider/docs) on
 The Cashier Provider is open-source software that works in conjunction with
 the [Laravel framework](https://laravel.com/), distributed under the MIT license.
 
+
 [badge_downloads]:      https://img.shields.io/packagist/dt/cashier-provider/cash.svg?style=flat-square
 
 [badge_license]:        https://img.shields.io/packagist/l/cashier-provider/cash.svg?style=flat-square
