@@ -17,16 +17,26 @@ declare(strict_types=1);
 
 namespace CashierProvider\Cash\Requests;
 
-class Status extends BaseRequest
-{
-    protected $reload_relations = true;
+use CashierProvider\Core\Http\Request;
 
-    public function getRawBody(): array
+class CreateRequest extends Request
+{
+    public function body(): array
     {
         return [
-            'PaymentId' => $this->model->getExternalId(),
+            'paymentId' => $this->payment->getKey(),
 
-            'Status' => $this->model->getPaymentModel()->cashier->details->getStatus(),
+            'status' => 'NEW',
         ];
+    }
+
+    public function headers(): array
+    {
+        return [];
+    }
+
+    public function uri(): ?string
+    {
+        return null;
     }
 }

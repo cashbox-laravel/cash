@@ -17,13 +17,26 @@ declare(strict_types=1);
 
 namespace CashierProvider\Cash\Responses;
 
-use CashierProvider\Core\Http\Response;
+use CashierProvider\Core\Http\ResponseInfo as BaseData;
 
-class Created extends Response
+class ResponseInfo extends BaseData
 {
-    protected $map = [
-        self::KEY_EXTERNAL_ID => 'PaymentId',
+    public ?int $status = null;
 
-        self::KEY_STATUS => 'Status',
-    ];
+    public int|string $paymentId;
+
+    public function getExternalId(): ?string
+    {
+        return null;
+    }
+
+    public function getOperationId(): ?string
+    {
+        return null;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
 }

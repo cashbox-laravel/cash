@@ -15,20 +15,28 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Responses;
+namespace CashierProvider\Cash\Requests;
 
-use CashierProvider\Core\Http\Response;
+use CashierProvider\Core\Http\Request;
 
-class State extends Response
+class RefundRequest extends Request
 {
-    protected $map = [
-        self::KEY_EXTERNAL_ID => 'PaymentId',
-
-        self::KEY_STATUS => 'Status',
-    ];
-
-    public function isEmpty(): bool
+    public function body(): array
     {
-        return empty($this->getExternalId()) || empty($this->getStatus());
+        return [
+            'paymentId' => $this->payment->getKey(),
+
+            'status' => 'REFUNDED',
+        ];
+    }
+
+    public function headers(): array
+    {
+        return [];
+    }
+
+    public function uri(): ?string
+    {
+        return null;
     }
 }

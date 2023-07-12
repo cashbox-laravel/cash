@@ -15,23 +15,15 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Requests;
+namespace CashierProvider\Cash\Services;
 
-use CashierProvider\Cash\Constants\Status as StatusConst;
+use CashierProvider\Core\Services\Statuses as BaseStatuses;
 
-class Cancel extends BaseRequest
+class Statuses extends BaseStatuses
 {
-    public function getRawBody(): array
-    {
-        return [
-            'PaymentId' => $this->model->getExternalId(),
-
-            'Status' => $this->status(),
-        ];
-    }
-
-    protected function status(): string
-    {
-        return StatusConst::REFUNDED;
-    }
+    public const FAILED    = ['FAILED'];
+    public const NEW       = ['NEW'];
+    public const REFUNDED  = ['REFUNDED'];
+    public const REFUNDING = ['REFUNDING'];
+    public const SUCCESS   = ['PAID'];
 }

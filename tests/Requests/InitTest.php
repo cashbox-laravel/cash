@@ -15,7 +15,7 @@
 
 namespace Tests\Requests;
 
-use CashierProvider\Cash\Requests\Create;
+use CashierProvider\Cash\Requests\CreateRequest;
 use CashierProvider\Core\Http\Request;
 use DragonCode\Contracts\Cashier\Http\Request as RequestContract;
 use Tests\TestCase;
@@ -24,16 +24,16 @@ class InitTest extends TestCase
 {
     public function testInstance()
     {
-        $request = $this->request(Create::class);
+        $request = $this->request(CreateRequest::class);
 
-        $this->assertInstanceOf(Create::class, $request);
+        $this->assertInstanceOf(CreateRequest::class, $request);
         $this->assertInstanceOf(Request::class, $request);
         $this->assertInstanceOf(RequestContract::class, $request);
     }
 
     public function testBody()
     {
-        $request = $this->request(Create::class);
+        $request = $this->request(CreateRequest::class);
 
         $this->assertIsArray($request->body());
 
@@ -45,7 +45,7 @@ class InitTest extends TestCase
 
     public function testGetRawBody()
     {
-        $request = $this->request(Create::class);
+        $request = $this->request(CreateRequest::class);
 
         $this->assertIsArray($request->getRawBody());
 

@@ -15,52 +15,35 @@
 
 namespace CashierProvider\Cash;
 
-use CashierProvider\Cash\Helpers\Statuses;
-use CashierProvider\Cash\Requests\Cancel;
-use CashierProvider\Cash\Requests\Create;
-use CashierProvider\Cash\Requests\Status;
-use CashierProvider\Cash\Resources\Details;
-use CashierProvider\Cash\Responses\Created;
-use CashierProvider\Cash\Responses\Refund;
-use CashierProvider\Cash\Responses\State;
+use CashierProvider\Cash\Exceptions\Exception;
+use CashierProvider\Cash\Requests\CreateRequest;
+use CashierProvider\Cash\Requests\RefundRequest;
+use CashierProvider\Cash\Requests\VerifyRequest;
+use CashierProvider\Cash\Responses\ResponseInfo;
+use CashierProvider\Cash\Services\Statuses;
+use CashierProvider\Core\Http\ResponseInfo as BaseInfoData;
 use CashierProvider\Core\Services\Driver as BaseDriver;
-use DragonCode\Contracts\Cashier\Http\Request as RequestResource;
-use DragonCode\Contracts\Cashier\Http\Response;
 
 class Driver extends BaseDriver
 {
-    protected $statuses = Statuses::class;
+    protected string $statuses = Statuses::class;
 
-    protected $details = Details::class;
+    protected string $exception = Exception::class;
 
-    public function start(): Response
+    protected string $info = ResponseInfo::class;
+
+    public function start(): BaseInfoData
     {
-        $request = Create::make($this->model);
-
-        return $this->request($request, Created::class);
+        return $this->request(CreateRequest::class);
     }
 
-    public function check(): Response
+    public function refund(): BaseInfoData
     {
-        $request = Status::make($this->model);
-
-        return $this->request($request, State::class);
+        return $this->request(RefundRequest::class);
     }
 
-    public function refund(): Response
+    public function verify(): BaseInfoData
     {
-        $request = Cancel::make($this->model);
-
-        return $this->request($request, Refund::class);
-    }
-
-    /**
-     * @param  \DragonCode\Contracts\Cashier\Http\Response|string  $response
-     */
-    protected function request(RequestResource $request, string $response): Response
-    {
-        $content = $request->body();
-
-        return $response::make($content);
+        return $this->request(VerifyRequest::class);
     }
 }

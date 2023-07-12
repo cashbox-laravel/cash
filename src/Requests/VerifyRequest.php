@@ -17,21 +17,26 @@ declare(strict_types=1);
 
 namespace CashierProvider\Cash\Requests;
 
-use CashierProvider\Cash\Constants\Status as StatusConst;
+use CashierProvider\Core\Http\Request;
 
-class Create extends BaseRequest
+class VerifyRequest extends Request
 {
-    public function getRawBody(): array
+    public function body(): array
     {
         return [
-            'PaymentId' => $this->model->getPaymentId(),
+            'paymentId' => $this->payment->getKey(),
 
-            'Status' => $this->status(),
+            'status' => 'PAID',
         ];
     }
 
-    protected function status(): string
+    public function headers(): array
     {
-        return StatusConst::PAID;
+        return [];
+    }
+
+    public function uri(): ?string
+    {
+        return null;
     }
 }

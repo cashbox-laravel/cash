@@ -15,10 +15,10 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Constants;
+namespace CashierProvider\Cash\Exceptions;
 
-class Status
+use CashierProvider\Core\Services\Exception as BaseException;
+
+class Exception extends BaseException
 {
-    public const PAID     = 'PAID';
-    public const REFUNDED = 'REFUNDED';
 }
