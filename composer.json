@@ -1,6 +1,6 @@
 {
     "name": "cashbox/cash",
-    "description": "Driver for managing cash payments (see cashbox/core)",
+    "description": "The driver implements the functionality of working with cash payment.",
     "license": "MIT",
     "type": "library",
     "keywords": [
@@ -64,6 +64,7 @@
         "branch-alias": {
             "dev-main": "4.x-dev"
         },
+        "title": "Cash Driver",
         "thanks": [
             {
                 "name": "dragon-code/laravel-support",
