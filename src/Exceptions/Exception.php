@@ -15,8 +15,8 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Exceptions;
+namespace Cashbox\Cash\Exceptions;
 
-use CashierProvider\Core\Services\Exception as BaseException;
+use Cashbox\Core\Services\Exception as BaseException;
 
 class Exception extends BaseException {}

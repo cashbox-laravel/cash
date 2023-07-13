@@ -47,7 +47,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "CashierProvider\\Cash\\": "src/"
+            "Cashbox\\Cash\\": "src/"
         }
     },
     "config": {

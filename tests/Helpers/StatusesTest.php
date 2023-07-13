@@ -15,8 +15,8 @@
 
 namespace Tests\Helpers;
 
-use CashierProvider\Cash\Helpers\Statuses;
-use CashierProvider\Cash\Resources\Details;
+use Cashbox\Cash\Helpers\Statuses;
+use Cashbox\Cash\Resources\Details;
 use Tests\TestCase;
 
 class StatusesTest extends TestCase

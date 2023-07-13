@@ -15,9 +15,9 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Requests;
+namespace Cashbox\Cash\Requests;
 
-use CashierProvider\Core\Http\Request;
+use Cashbox\Core\Http\Request;
 
 class RefundRequest extends Request
 {

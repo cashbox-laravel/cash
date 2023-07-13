@@ -15,8 +15,8 @@
 
 namespace Tests\Requests;
 
-use CashierProvider\Cash\Requests\CreateRequest;
-use CashierProvider\Core\Http\Request;
+use Cashbox\Cash\Requests\CreateRequest;
+use Cashbox\Core\Http\Request;
 use DragonCode\Contracts\Cashier\Http\Request as RequestContract;
 use Tests\TestCase;
 

@@ -15,9 +15,9 @@
 
 namespace Tests\Observers;
 
-use CashierProvider\Core\Constants\Status;
-use CashierProvider\Core\Facades\Config\Payment as PaymentConfig;
-use CashierProvider\Core\Providers\ObserverServiceProvider;
+use Cashbox\Core\Constants\Status;
+use Cashbox\Core\Facades\Config\Payment as PaymentConfig;
+use Cashbox\Core\Providers\ObserverServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;

@@ -15,9 +15,9 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Responses;
+namespace Cashbox\Cash\Responses;
 
-use CashierProvider\Core\Http\ResponseInfo as BaseData;
+use Cashbox\Core\Http\ResponseInfo as BaseData;
 
 class ResponseInfo extends BaseData
 {

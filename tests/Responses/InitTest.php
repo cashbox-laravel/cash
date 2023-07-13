@@ -15,8 +15,8 @@
 
 namespace Tests\Responses;
 
-use CashierProvider\Cash\Responses\Created;
-use CashierProvider\Core\Http\ResponseInfo as BaseResponse;
+use Cashbox\Cash\Responses\Created;
+use Cashbox\Core\Http\ResponseInfo as BaseResponse;
 use DragonCode\Contracts\Cashier\Http\Response;
 use Tests\TestCase;
 

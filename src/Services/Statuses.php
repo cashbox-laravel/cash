@@ -15,9 +15,9 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Cash\Services;
+namespace Cashbox\Cash\Services;
 
-use CashierProvider\Core\Services\Statuses as BaseStatuses;
+use Cashbox\Core\Services\Statuses as BaseStatuses;
 
 class Statuses extends BaseStatuses
 {
