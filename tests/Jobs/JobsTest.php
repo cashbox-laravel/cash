@@ -59,9 +59,9 @@ class JobsTest extends TestCase
         $this->assertSame(1, DB::table('payments')->count());
         $this->assertSame(1, DB::table('cashier_details')->count());
 
-        $this->assertIsString($payment->cashier->external_id);
+        $this->assertIsString($payment->cashbox->external_id);
 
-        $this->assertSame('PAID', $payment->cashier->details->getStatus());
+        $this->assertSame('PAID', $payment->cashbox->details->getStatus());
 
         $this->assertSame(
             PaymentConfig::getStatuses()->getStatus(Status::SUCCESS),
@@ -89,9 +89,9 @@ class JobsTest extends TestCase
         $this->assertSame(1, DB::table('payments')->count());
         $this->assertSame(1, DB::table('cashier_details')->count());
 
-        $this->assertIsString($payment->cashier->external_id);
+        $this->assertIsString($payment->cashbox->external_id);
 
-        $this->assertSame('REFUNDED', $payment->cashier->details->getStatus());
+        $this->assertSame('REFUNDED', $payment->cashbox->details->getStatus());
 
         $this->assertSame(
             PaymentConfig::getStatuses()->getStatus(Status::REFUND),
