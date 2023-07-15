@@ -6,6 +6,6 @@ namespace Cashbox\Cash\Resources;
 
 use Cashbox\Core\Resources\Resource;
 
-class CashResource extends Resource
+abstract class CashResource extends Resource
 {
 }
