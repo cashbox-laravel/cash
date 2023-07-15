@@ -15,28 +15,26 @@
 
 declare(strict_types=1);
 
-namespace Cashbox\Cash\Responses;
+namespace Cashbox\Cash\Http\Responses;
 
-use Cashbox\Core\Http\ResponseInfo as BaseData;
+use Cashbox\Core\Concerns\Helpers\Identifiers;
+use Cashbox\Core\Http\Response as BaseData;
 
-class ResponseInfo extends BaseData
+class Response extends BaseData
 {
-    public ?int $status = null;
+    use Identifiers;
+
+    public ?string $status;
 
     public int|string $paymentId;
 
     public function getExternalId(): ?string
     {
-        return null;
+        return $this->paymentId;
     }
 
     public function getOperationId(): ?string
     {
-        return null;
-    }
-
-    public function getStatus(): ?string
-    {
-        return $this->status;
+        return static::uuid();
     }
 }

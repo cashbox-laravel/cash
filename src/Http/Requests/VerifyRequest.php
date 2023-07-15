@@ -15,24 +15,19 @@
 
 declare(strict_types=1);
 
-namespace Cashbox\Cash\Requests;
+namespace Cashbox\Cash\Http\Requests;
 
 use Cashbox\Core\Http\Request;
 
-class RefundRequest extends Request
+class VerifyRequest extends Request
 {
     public function body(): array
     {
         return [
-            'paymentId' => $this->payment->getKey(),
+            'external_id' => $this->resource->paymentId(),
 
-            'status' => 'REFUNDED',
+            'status' => 'PAID',
         ];
-    }
-
-    public function headers(): array
-    {
-        return [];
     }
 
     public function uri(): ?string

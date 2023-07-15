@@ -19,4 +19,4 @@ namespace Cashbox\Cash\Exceptions;
 
 use Cashbox\Core\Services\Exception as BaseException;
 
-class Exception extends BaseException {}
+class Exception extends BaseException { }
