@@ -24,8 +24,6 @@ class CreateRequest extends Request
     public function body(): array
     {
         return [
-            'external_id' => $this->resource->paymentId(),
-
             'status' => 'NEW',
         ];
     }

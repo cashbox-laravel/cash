@@ -18,23 +18,29 @@ declare(strict_types=1);
 namespace Cashbox\Cash\Http\Responses;
 
 use Cashbox\Core\Concerns\Helpers\Identifiers;
+use Cashbox\Core\Data\Models\InfoData;
 use Cashbox\Core\Http\Response as BaseData;
+use Spatie\LaravelData\Attributes\MapName;
+use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
+#[MapName(SnakeCaseMapper::class)]
 class Response extends BaseData
 {
     use Identifiers;
 
     public ?string $status;
 
-    public int|string $paymentId;
-
-    public function getExternalId(): ?string
-    {
-        return $this->paymentId;
-    }
-
     public function getOperationId(): ?string
     {
         return static::uuid();
+    }
+
+    public function getInfo(): InfoData
+    {
+        return InfoData::from([
+            'externalId'  => $this->getExternalId(),
+            'operationId' => $this->getOperationId(),
+            'status'      => $this->status,
+        ]);
     }
 }
