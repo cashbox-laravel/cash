@@ -40,7 +40,13 @@ class Response extends BaseData
         return InfoData::from([
             'externalId'  => $this->getExternalId(),
             'operationId' => $this->getOperationId(),
-            'status'      => $this->status,
+            'status'      => $this->getStatus(),
+            'extra'       => $this->getExtra(),
         ]);
+    }
+
+    protected function getStatus(): ?string
+    {
+        return $this->status;
     }
 }
