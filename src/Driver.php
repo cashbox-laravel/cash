@@ -15,11 +15,11 @@
 
 namespace Cashbox\Cash;
 
-use Cashbox\Cash\Exceptions\Exception;
 use Cashbox\Cash\Http\Requests\CreateRequest;
 use Cashbox\Cash\Http\Requests\RefundRequest;
 use Cashbox\Cash\Http\Requests\VerifyRequest;
 use Cashbox\Cash\Http\Responses\Response;
+use Cashbox\Cash\Services\Exception;
 use Cashbox\Cash\Services\Statuses;
 use Cashbox\Core\Http\Response as BaseInfoData;
 use Cashbox\Core\Services\Driver as BaseDriver;

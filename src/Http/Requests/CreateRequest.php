@@ -28,7 +28,7 @@ class CreateRequest extends Request
         ];
     }
 
-    public function uri(): ?string
+    public function url(): ?string
     {
         return null;
     }
