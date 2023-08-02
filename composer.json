@@ -64,12 +64,10 @@
         "branch-alias": {
             "dev-main": "4.x-dev"
         },
-        "thanks": [
-            {
-                "name": "cashbox/core",
-                "url": "https://github.com/cashbox-laravel/core"
-            }
-        ],
+        "thanks": {
+            "name": "cashbox/docs",
+            "url": "https://github.com/cashbox-laravel/foundation"
+        },
         "title": "Cash Driver"
     }
 }
