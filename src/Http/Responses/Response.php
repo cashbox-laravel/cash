@@ -28,7 +28,7 @@ class Response extends BaseData
 {
     use Identifiers;
 
-    public ?string $status;
+    public string $status;
 
     public function getOperationId(): ?string
     {
